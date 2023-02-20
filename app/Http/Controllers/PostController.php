@@ -9,6 +9,6 @@ class PostController extends Controller
 {
     public function post() {
         $posts = Post::all();
-        return view('dashboard.index')->with('posts', $posts);
+        return view('dashboard.index', ['posts' => $posts]);
     }
 }

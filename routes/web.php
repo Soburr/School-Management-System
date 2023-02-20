@@ -10,9 +10,7 @@ Route::get('/', function () {
     return view('dashboard.index');
 });
 
-Route::get('/post', 'App\Http\Controllers\PostController@post')->middleware(['auth'])->name('post');
-
-// Route::get('/signup', 'App\Http\Controllers\SignUpController@signup')->middleware(['auth'])->name('signup');
+Route::get('/', 'App\Http\Controllers\PostController@post');
 
 Route::get('/dashboard', 'App\Http\Controllers\DashboardController@dashboard')->middleware(['auth'])->name('dashboard');
 

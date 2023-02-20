@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Post extends Resource
@@ -47,6 +48,8 @@ class Post extends Resource
             DateTime::make('Publish Until')->hideFromIndex()->rules('after_or_equal:publish_at'),
 
             Boolean::make('Is Published'),
+
+            BelongsTo::make('User')
         ];
     }
 
