@@ -11,13 +11,4 @@ class DashboardController extends Controller
         return view('dashboard.index');
     }
 
-    public function dashboard () {
-        return view('dashboard');
-    }
-
-    public function logout () {
-        auth()->logout();
-        return redirect('/');
-    }
-
  }

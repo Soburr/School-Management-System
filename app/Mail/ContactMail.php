@@ -13,47 +13,37 @@ class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct($data)
+    public $validatedData;
+
+    public function __construct($validatedData)
     {
-        $this->data = $data;
+        $this->validatedData = $validatedData;
     }
 
-    /**
-     * Get the message envelope.
-     *
-     * @return \Illuminate\Mail\Mailables\Envelope
-     */
-    public function envelope()
-    {
-        return new Envelope(
-            subject: 'Contact Mail',
-        );
+    // public function envelope()
+    // {
+    //     return new Envelope(
+    //         subject: 'Contact Mail',
+    //     );
+    // }
+
+
+    // public function content()
+    // {
+    //     return new Content(
+    //         view: 'view.name',
+    //     );
+    // }
+
+    // public function attachments()
+    // {
+    //     return [];
+    // }
+
+    public function build() {
+      return $this->subject('New Contact Message')
+      ->to('adebesinnewton99@mailtrap.io')
+      ->view('dashboard.contact', ['validatedData' => $this->validatedData]);
     }
 
-    /**
-     * Get the message content definition.
-     *
-     * @return \Illuminate\Mail\Mailables\Content
-     */
-    public function content()
-    {
-        return new Content(
-            view: 'view.name',
-        );
-    }
-
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array
-     */
-    public function attachments()
-    {
-        return [];
-    }
 }

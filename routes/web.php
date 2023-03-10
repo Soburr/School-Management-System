@@ -12,13 +12,13 @@ Route::get('/', function () {
 
 Route::get('/', 'App\Http\Controllers\PostController@post');
 
-Route::get('/dashboard', 'App\Http\Controllers\DashboardController@dashboard')->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', 'App\Http\Controllers\PortalController@dashboard')->middleware(['auth'])->name('dashboard');
 
-Route::get('/logout', 'App\Http\Controllers\DashboardController@logout');
+Route::get('/dashboard', 'App\Http\Controllers\PortalController@index')->middleware(['auth'])->name('portal');
 
-Route::get('/contact', 'App\Http\Controllers\ContactController@create');
+Route::get('/logout', 'App\Http\Controllers\PortalController@logout');
 
-Route::post('/contact', 'App\Http\Controllers\ContactController@store')->name('contact.store');
+Route::get('/contact', 'App\Http\Controllers\ContactController@sendContactForm')->name('contact.form');
 
 
 

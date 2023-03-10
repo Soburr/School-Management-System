@@ -440,27 +440,34 @@
             </div>
           </div><br><br>
 
-    @if ($message = Session::get('success'))
 
-       <div class="alert alert-success">
-           <p>{{ $message }}</p>
-       </div>
+          @if (Session::has('success'))
+              <div class="alert alert-success">
+                {{ Session::get('success') }}
+              </div>
+          @endif
 
-    @endif
-
-         <form action="{{ route('contact.store') }}" method="post">
-            @csrf
+         <form action="{{ route('contact.form')}}" method="get">
+             @csrf
             <div>
-              <input type="text" placeholder="Name" />
+              <input type="text" placeholder="Name" name="name" value="{{ old('name') }}" />
+
             </div>
             <div>
-              <input type="email" placeholder="Email" />
+              <input type="email" placeholder="Email" name="email" value="{{ old('email') }}" />
+
             </div>
             <div>
-              <input type="text" placeholder="Phone Number" />
+              <input type="text" placeholder="Phone Number" name="number" value="{{ old('number') }}" />
+
             </div>
             <div>
-              <input type="text" class="message-box" placeholder="Message" />
+                <input type="text" class="message-box" placeholder="Subject Of The Mail" name="subject" value="{{ old('subject') }}" />
+
+              </div>
+            <div>
+              <input type="text" class="message-box" placeholder="Message" name="message" value="{{ old('message') }}" />
+
             </div>
             <div class="btn-box">
               <button>
