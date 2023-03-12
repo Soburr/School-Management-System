@@ -446,6 +446,11 @@
                 {{ Session::get('success') }}
               </div>
           @endif
+          @if (Session::has('failure'))
+              <div class="alert alert-danger">
+                <p>{{ (Session::get('failure') )}}</p>
+              </div><br>
+          @endif
 
          <form action="{{ route('contact.form')}}" method="get">
              @csrf

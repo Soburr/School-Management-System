@@ -41,7 +41,7 @@ class ContactMail extends Mailable
     // }
 
     public function build() {
-      return $this->subject('New Contact Message')
+      return $this->subject('You have a new message')
       ->to('adebesinnewton99@mailtrap.io')
       ->view('dashboard.contact', ['validatedData' => $this->validatedData]);
     }

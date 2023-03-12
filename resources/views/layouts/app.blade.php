@@ -142,17 +142,17 @@
                 </div>
 
                 <div class="container">
-                    @if (\Session::has('success'))
+                    @if (Session::has('success'))
                         <div class="alert alert-success">
-                            <p>{{ (\Session::get('success') )}}</p>
+                            <p>{{ (Session::get('success')) }}</p>
                         </div><br>
                     @endif
 
-                    @if (\Session::has('failure'))
-                    <div class="alert alert-danger">
-                        <p>{{ (\Session::get('failure') )}}</p>
-                    </div><br>
-                @endif
+                    @if (Session::has('failure'))
+                        <div class="alert alert-danger">
+                            <p>{{ (Session::get('failure') )}}</p>
+                        </div><br>
+                    @endif
                 </div>
 
                 <div class="col-md-6 col-lg-3 info-col">
@@ -160,7 +160,8 @@
                     <h4 style="font-size: 20px;">
                       Add Your Mail To Get Latest News From ZALAB
                     </h4>
-                    <form action="{{url ('newsletter')}}">
+
+                    <form method="get" action="{{url ('subscribe')}}">
                         @csrf
                       <input type="text" name="email" placeholder="Enter email" />
                       <button type="submit">
