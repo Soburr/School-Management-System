@@ -20,26 +20,6 @@ class ContactMail extends Mailable
         $this->validatedData = $validatedData;
     }
 
-    // public function envelope()
-    // {
-    //     return new Envelope(
-    //         subject: 'Contact Mail',
-    //     );
-    // }
-
-
-    // public function content()
-    // {
-    //     return new Content(
-    //         view: 'view.name',
-    //     );
-    // }
-
-    // public function attachments()
-    // {
-    //     return [];
-    // }
-
     public function build() {
       return $this->subject('You have a new message')
       ->to('adebesinnewton99@mailtrap.io')

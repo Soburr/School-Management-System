@@ -15,8 +15,8 @@ class Post extends Model
         'publish_until' => 'datetime',
     ];
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function student(){
+        return $this->belongsTo(Student::class);
     }
 
     protected $guarded = [];

@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\Auth\RegisteredStudentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PortalController;
@@ -26,6 +26,9 @@ Route::get('/contact', 'App\Http\Controllers\ContactController@sendContactForm')
 
 Route::get('/subscribe', 'App\Http\Controllers\SubscriptionController@subscribe')->name('subscribe');
 
+Route::get('/sign-up', [RegisteredStudentController::class, 'registerStudent'])->name('sign-up');
+
+Route::post('/sign-up', [RegisteredStudentController::class, 'processSignUp']);
 
 
 

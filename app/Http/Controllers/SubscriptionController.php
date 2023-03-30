@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Mail\NewContactAvailable;
-use App\Mail\ConfirmationEmail;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;

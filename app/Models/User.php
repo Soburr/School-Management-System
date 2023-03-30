@@ -25,9 +25,9 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function post () {
-        return $this->hasMany(Post::class);
-    }
+    // public function post () {
+    //     return $this->hasMany(Post::class);
+    // }
 
     protected $casts = [
         'email_verified_at' => 'datetime',
