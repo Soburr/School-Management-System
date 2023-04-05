@@ -21,7 +21,7 @@
 
                 <x-input id="student_id" class="block mt-1 w-full" type="text" name="student_id" :value="old('student_id')" required autofocus />
             </div>
-
+            
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('PASSWORD')" />

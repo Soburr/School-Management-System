@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Bcrypt;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\StudentRegistration;
 use Illuminate\Support\Str;
@@ -25,7 +25,7 @@ class RegisteredStudentController extends Controller
 
        $validatedData = $request->validate([
           'name' => 'required',
-          'email' => 'required|unique:students,email'
+          'email' => 'required|unique:students,email',
        ]);
 
       $password = Str::random(8);
@@ -42,8 +42,8 @@ class RegisteredStudentController extends Controller
       $student = new Student([
          'name' => $request->input('name'),
          'email' => $request->input('email'),
-         'student_id' => $request->input('student_id'),
-         'password' => Hash::make($password)
+         'student_id' => ($student_id),
+         'password' => bcrypt($password)
       ]);
       $student->save();
 
