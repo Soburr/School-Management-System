@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Auth;
 class PortalController extends Controller
 {
     public function index () {
-        $user = Auth::user();
-        $name = $user->name;
+        $student = Auth::student();
+        $name = $student->name;
         return view('dashboard', ['name' => $name]);
     }
 

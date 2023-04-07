@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisteredStudentController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PortalController;
@@ -29,6 +30,10 @@ Route::get('/subscribe', 'App\Http\Controllers\SubscriptionController@subscribe'
 Route::get('/sign-up', [RegisteredStudentController::class, 'registerStudent'])->name('sign-up');
 
 Route::post('/sign-up', [RegisteredStudentController::class, 'processSignUp']);
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+
+Route::post('/login', [LoginController::class, 'login']);
 
 
 

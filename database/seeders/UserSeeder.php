@@ -10,13 +10,13 @@ use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
-   
+
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'Test',
-            'email' => 'Test@test.com',
-            'password' => Hash::make('Password'),
-        ]);
+        // DB::table('users')->insert([
+        //     'name' => 'Test',
+        //     'email' => 'Test@test.com',
+        //     'password' => Hash::make('Password'),
+        // ]);
     }
 }

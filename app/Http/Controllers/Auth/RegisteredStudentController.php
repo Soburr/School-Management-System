@@ -12,6 +12,7 @@ use App\Models\Student;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class RegisteredStudentController extends Controller
 {
@@ -43,7 +44,7 @@ class RegisteredStudentController extends Controller
          'name' => $request->input('name'),
          'email' => $request->input('email'),
          'student_id' => ($student_id),
-         'password' => bcrypt($password)
+         'password' => Hash::create($password)
       ]);
       $student->save();
 
