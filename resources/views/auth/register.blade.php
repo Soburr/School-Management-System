@@ -1,11 +1,19 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            
+
         </x-slot>
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
+        @if(Session::has('success'))
+
+           <div class="alert alert-success">
+               {{ Session::get('success') }}
+           </div>
+
+        @endif
 
         <form method="POST" action="{{ route('sign-up') }}">
             @csrf

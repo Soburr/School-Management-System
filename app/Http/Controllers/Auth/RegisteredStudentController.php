@@ -34,8 +34,11 @@ class RegisteredStudentController extends Controller
       $name = $validatedData['name'];
       $firstname = substr($name, 0, 3);
       $randomNumbers = '';
+
+      
+
       do {
-           $randomNumbers = mt_rand(1000, 9999);
+        $randomNumbers = mt_rand(1000, 9999);
      } while (DB::table('students')->where('student_id', $firstname.$randomNumbers)->exists());
 
       $student_id = $firstname.$randomNumbers;
@@ -44,8 +47,11 @@ class RegisteredStudentController extends Controller
          'name' => $request->input('name'),
          'email' => $request->input('email'),
          'student_id' => ($student_id),
-         'password' => Hash::create($password)
+         'password' => Hash::make($password)
       ]);
+
+      $student->password = Hash::make($password);
+
       $student->save();
 
       Mail::to($request->email)->send(new StudentRegistration($request->name, $student_id, $password));

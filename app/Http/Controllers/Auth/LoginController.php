@@ -22,6 +22,7 @@ class LoginController extends Controller
 
          $student = Student::where('student_id', $request->student_id)->first();
 
+
          if ($student && Hash::check($request->password, $student->password)){
               Auth::login($student);
               return redirect('/dashboard')->with('success', 'You are Logged in');

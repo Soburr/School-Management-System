@@ -12,6 +12,14 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
+        @if(Session::has('error'))
+
+        <div class="alert alert-danger">
+            {{ Session::get('error') }}
+        </div>
+
+     @endif
+
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
@@ -21,7 +29,7 @@
 
                 <x-input id="student_id" class="block mt-1 w-full" type="text" name="student_id" :value="old('student_id')" required autofocus />
             </div>
-            
+
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('PASSWORD')" />

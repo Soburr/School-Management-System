@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Auth\RegisteredStudentController;
+use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ContactController;
@@ -17,9 +17,9 @@ Route::get('/', function () {
 
 Route::get('/', 'App\Http\Controllers\PostController@post');
 
-Route::get('/dashboard', 'App\Http\Controllers\PortalController@dashboard')->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', 'App\Http\Controllers\PortalController@dashboard')->middleware(['auth:web'])->name('dashboard');
 
-Route::get('/dashboard', 'App\Http\Controllers\PortalController@index')->middleware(['auth'])->name('portal');
+Route::get('/dashboard', 'App\Http\Controllers\PortalController@index')->middleware(['auth:web'])->name('portal');
 
 Route::get('/logout', 'App\Http\Controllers\PortalController@logout');
 
@@ -27,16 +27,22 @@ Route::get('/contact', 'App\Http\Controllers\ContactController@sendContactForm')
 
 Route::get('/subscribe', 'App\Http\Controllers\SubscriptionController@subscribe')->name('subscribe');
 
-Route::get('/sign-up', [RegisteredStudentController::class, 'registerStudent'])->name('sign-up');
+Route::get('/sign-up', 'App\Http\Controllers\RegistrationController@showRegistrationForm')->name('sign-up');
 
-Route::post('/sign-up', [RegisteredStudentController::class, 'processSignUp']);
+Route::post('/sign-up', 'App\Http\Controllers\RegistrationController@register');
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/login', 'App\Http\Controllers\RegistrationController@showLoginForm')->name('login');
 
-Route::post('/login', [LoginController::class, 'login']);
+Route::post('/login', 'App\Http\Controllers\RegistrationController@login');
+
+// Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+
+// Route::post('/login', 'Auth\LoginController@login')->name('login');
 
 
 
 
 
-require __DIR__.'/auth.php';
+
+
+// require __DIR__.'/auth.php';
